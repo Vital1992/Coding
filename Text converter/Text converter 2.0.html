@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple setInterval clock</title>
+    <style>
+      p {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="file" id="files" name="files[]" multiple />
+    <output id="list"></output>
+
+    <script>
+      function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+
+        // files is a FileList of File objects. List some properties.
+        var output = [];
+        for (var i = 0, f; f = files[i]; i++) {
+          var input, lowered, splitted, final
+          var out = [];
+          input = f.name;
+          lowered = input.toString().toLowerCase();
+          splitted = lowered.split(/[\s_]+/);
+          //console.log(splitted);
+
+      function count(){
+          for (var i=0; i<splitted.length; i++){
+            if (splitted[i].includes("(")){
+              var res = '('+splitted[i].charAt(1).toUpperCase()+splitted[i].slice(2); //charAt select first char of the word in the array, toUpperCase makes it uppercase + slice adds the rest of the word
+              out.push(res);
+            }else{
+              var res = splitted[i].charAt(0).toUpperCase()+splitted[i].slice(1); //charAt select first char of the word in the array, toUpperCase makes it uppercase + slice adds the rest of the word
+              out.push(res);
+            }
+          };
+          var prefinal = out.toString().replace(/,/g, ' ');//The g modifier is used to perform a global match (find all matches rather than stopping after the first match).
+          final = prefinal.slice(0,-4);
+      }
+          count();
+          output.push('<li><strong>', final,'</li>');
+        }
+        //console.log(output);
+        //console.log(output.join(''));
+        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+      }
+
+      document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    </script>
+  </body>
+</html>
