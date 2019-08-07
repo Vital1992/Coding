@@ -52,7 +52,7 @@ document.getElementById('button').addEventListener('click', function(){
     var a=consonants[side][splitted[i]];
     output.push(a);
   };
-  var final = output.toString();
+  var final = output.toString(); //or output.join() to convert array into string
   var converted = final.replace(/,/g, '');//The g modifier is used to perform a global match (find all matches rather than stopping after the first match).
   if (converted){alert(converted)};
 });

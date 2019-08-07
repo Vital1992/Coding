@@ -1,0 +1,34 @@
+<html>
+   <head>
+      <title>JavaScript Dates</title>
+   </head>
+   <body>
+      <script>
+         var date1, date2;
+
+         date1 = new Date( "Jan 1, 2018 23:10:05" );
+         document.write(""+date1);
+
+         date2 = new Date( "Jan 2, 2018 02:15:10" );
+         document.write("<br>"+date2);
+
+         var res = Math.abs(date1 - date2) / 1000;
+
+         // get total days between two dates
+         var days = Math.floor(res / 86400);
+         document.write("<br>Difference (Days): "+days);
+
+         // get hours
+         var hours = Math.floor(res / 3600) % 24;
+         document.write("<br>Difference (Hours): "+hours);
+
+         // get minutes
+         var minutes = Math.floor(res / 60) % 60;
+         document.write("<br>Difference (Minutes): "+minutes);
+
+         // get seconds
+         var seconds = res % 60;
+         document.write("<br>Difference (Seconds): "+seconds);
+      </script>
+   </body>
+</html>
