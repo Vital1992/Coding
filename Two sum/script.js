@@ -1,5 +1,5 @@
 //Two sum problem
-/*Given an array of integers, return indices of 
+/*Given an array of integers, return indices of
 two numbers such that they add up to a specific target.
 You may assume that each input would have exactly one solutionand you may not use the same element twice.
 
@@ -18,7 +18,7 @@ function twoSum(arr, S) {
     for (var j = i + 1; j < arr.length; j++) {
       // determine if these two elements sum to S
       if (arr[i] + arr[j] === S) {
-        //If we want to return nums itself: sums.push([arr[i], arr[j]]); 
+        //If we want to return nums itself: sums.push([arr[i], arr[j]]);
         sums.push(i,j);
       }
     }
