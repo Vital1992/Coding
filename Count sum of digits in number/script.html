@@ -1,0 +1,55 @@
+<html>
+   <head>
+      <title>JavaScript</title>
+   </head>
+   <body>
+      <script>
+//My solution
+      /*
+      function calc(){
+          var input = [111, 213, 123, 111, 456];
+          for (var i=0; i<input.length; i++){
+            var temp = input[i].toString().split('').map(cur=>parseInt(cur));
+            var result = temp.reduce((prev, cur, index) => prev + cur, 0);
+            console.log(input[i]+':'+result);
+          }
+      }
+      calc();
+*/
+
+//Two methods to get the sum of all parts of an integer number:
+
+//1. With numerical operations
+//Take the number and build the remainder of ten and add that.
+//Then take the integer part of the division of the number by 10. Proceed.
+
+var value = 256811,
+    sum = 0;
+
+while (value) {
+    sum = sum + value % 10;// result: 1, 8, 6, 5, 2
+    value = Math.floor(value / 10);// result: 25681, 2568, 256, 25, 2, 0, when loop reaches 0, loop is stopped because 0 is falsy value
+}
+
+console.log(sum);
+
+
+//2. Use string operations
+
+//Convert the number to string, split the string and get an array with all digits and perform a reduce
+//for every part and return the sum.
+/*
+var value = 2568,
+    sum = value
+        .toString()
+        .split('')
+        .map(Number)
+        .reduce(function (a, b) {
+            return a + b;
+        }, 0);
+
+console.log(sum);
+*/
+    </script>
+   </body>
+</html>
