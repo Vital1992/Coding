@@ -1,8 +1,11 @@
-/* Console.ssert()
+/* Console.assert()
 Writes an error message to the console if the assertion is false. If the assertion is true, nothing happens.
 
 Note: This feature is available in Web Workers.
-The  console.assert() method was implemented differently in older Node.js versions  than the console.assert() method  available in browsers. In browsers, calling console.assert() with a falsy assertion prints message to the console without interrupting execution of subsequent code. Before Node.js v10.0.0, however, a falsy assertion would also cause an AssertionError to be thrown. This discrepancy was fixed with Node v10, so that console.assert() now acts the same in both Node and the browser.
+The  console.assert() method was implemented differently in older Node.js versions  than the console.assert() method
+available in browsers. In browsers, calling console.assert() with a falsy assertion prints message to the console without
+interrupting execution of subsequent code. Before Node.js v10.0.0, however, a falsy assertion would also cause an AssertionError to be thrown.
+This discrepancy was fixed with Node v10, so that console.assert() now acts the same in both Node and the browser.
 
 SyntaxSection
 console.assert(assertion, obj1 [, obj2, ..., objN]);

@@ -29,6 +29,21 @@
          // get seconds
          var seconds = res % 60;
          document.write("<br>Difference (Seconds): "+seconds);
+
+//How to subtract 24hr from current time:
+         var example = '2019-08-16T22:06:31.199Z';
+         var currentTime= new Date().toISOString();//getting currect time
+         var year = currentTime.split('-')[0];
+         var month = currentTime.split('-')[1];
+         var date = currentTime.split(':')[0].split('-')[2].split('T').map(cur=>parseInt(cur))[0]+1;//getting date and converting it to int to subtract 1
+         var hour = currentTime.split('T')[1].split(':')[0];
+         var mins = currentTime.split('T')[1].split(':')[1];
+         var sec = currentTime.split('T')[1].split(':')[2].split('.')[0];
+         var msec = currentTime.split('T')[1].split(':')[2].split('.')[1];
+         var final = `${year}-${month}-${date}T${hour}:${mins}:${sec}.${msec}`
+
+         console.log(currentTime)
+         console.log(final)
       </script>
    </body>
 </html>
