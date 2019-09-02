@@ -99,6 +99,20 @@ function bubbleSort(array) {
     return array;
 }
 
+//Buble sort v 2.0 (removed isSorted)
+
+function bubbleSort(array) {
+        for(let i = 0; i < array.length - 1; i++) {
+            if(array[i] > array[i+1]) {
+                let temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+                bubbleSort(array)
+            }
+        }
+    return array;
+}
+
 //Selection sort----------------------------------------------------------------
 //Selection sort compares a minimum item with the rest of the array.
 //Kind of like guessing which is the smallest number, then checking the rest of the array and

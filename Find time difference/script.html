@@ -41,9 +41,35 @@
          var sec = currentTime.split('T')[1].split(':')[2].split('.')[0];
          var msec = currentTime.split('T')[1].split(':')[2].split('.')[1];
          var final = `${year}-${month}-${date}T${hour}:${mins}:${sec}.${msec}`
-
          console.log(currentTime)
          console.log(final)
+
+//Better way to subtract 24hrs
+var currentDate = new Date();//getting current time
+var final = new Date();//getting current time
+final.setDate( final.getDate() + 1 );//setting date of final date to +1 day
+
+console.log(currentDate.toISOString());
+console.log(final.toISOString());
+
+//Subtract 6 months and add 6 months
+var from_date_time = new Date();//getting current time
+var to_date_time = new Date();//getting current time
+
+from_date_time.setMonth( from_date_time.getMonth() - 6 );//setting month to current - 6 months
+to_date_time.setMonth( to_date_time.getMonth() + 6 );//setting month to current + 6 months
+
+console.log(from_date_time.toISOString());
+console.log(to_date_time.toISOString());
+
+//Convert curret date to msec and back
+/*
+var currentTimeMsec = Date.parse(new Date());
+console.log(currentTimeMsec);
+var currentTime = new Date(currentTimeMsec);
+console.log(currentTime);
+*/
+
       </script>
    </body>
 </html>
