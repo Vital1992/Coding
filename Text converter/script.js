@@ -22,7 +22,7 @@ document.getElementById('button').addEventListener('click', function(){
     }
   };
   final = output.toString().replace(/,/g, ' ');//The g modifier is used to perform a global match (find all matches rather than stopping after the first match).
-  //console.log(final);
+  //console.log(final); //or we can use output.join(" ")
   let pElem = document.createElement('p');
   pElem.textContent = final;
   document.body.appendChild(pElem);

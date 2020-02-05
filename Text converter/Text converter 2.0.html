@@ -38,7 +38,7 @@
             }
           };
           var prefinal = out.toString().replace(/,/g, ' ');//The g modifier is used to perform a global match (find all matches rather than stopping after the first match).
-          final = prefinal.slice(0,-4);
+          final = prefinal.slice(0,-4);//-4 to cut file type, like .mp3
       }
           count();
           output.push('<li><strong>', final,'</li>');
