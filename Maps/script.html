@@ -377,6 +377,85 @@ for(var elem of getit)
     console.log(elem);
 //Note:- We can create a user define iterable rather than using the default one.
 
+
+//Map can also use objects as keys----------------------------------------------
+
+//For instance:
+let john = { name: "John" };
+
+// for every user, let's store their visits count
+let visitsCountMap = new Map();
+
+// john is the key for the map
+visitsCountMap.set(john, 123);
+console.log(visitsCountMap);
+console.log( visitsCountMap.get(john) ); // 123
+
+// Using objects as keys is one of most notable and important Map features. For string keys,
+// Object can be fine, but not for object keys.
+
+// Let’s try:
+let john1 = { name: "John" };
+let visitsCountObj = {}; // try to use an object
+visitsCountObj[john1] = 123; // try to use john object as the key
+console.log(visitsCountObj);
+console.log( visitsCountObj["[object Object]"] ); // 123
+// As visitsCountObj is an object, it converts all keys, such as john to strings,
+// so we’ve got the string key "[object Object]". Definitely not what we want.
+
+
+//Object.entries: Map from Object-----------------------------------------------
+
+// If we have a plain object, and we’d like to create a Map from it, then we can use built-in method
+// Object.entries(obj) that returns an array of key/value pairs for an object exactly in that format.
+//
+// So we can create a map from an object like this:
+let obj = {
+  name: "John",
+  age: 30
+};
+
+let map11 = new Map(Object.entries(obj));
+console.log( map11.get('name') ); // John
+//Here, Object.entries returns the array of key/value pairs: [ ["name","John"], ["age", 30] ]. That’s what Map needs.
+
+
+//Object.fromEntries: Object from Map-------------------------------------------
+
+// We’ve just seen how to create Map from a plain object with Object.entries(obj).
+// There’s Object.fromEntries method that does the reverse: given an array of
+// [key, value] pairs, it creates an object from them:
+
+let prices = Object.fromEntries([
+  ['banana', 1],
+  ['orange', 2],
+  ['meat', 4]
+]);
+
+// now prices = { banana: 1, orange: 2, meat: 4 }
+console.log(prices); //{banana: 1, orange: 2, meat: 4}
+console.log(prices.orange); // 2
+//We can use Object.fromEntries to get an plain object from Map.
+//E.g. we store the data in a Map, but we need to pass it to a 3rd-party code that expects a plain object.
+//Here we go:
+
+let map12 = new Map();
+map12.set('banana', 1)
+.set('orange', 2)
+.set('meat', 4);
+
+let obj1 = Object.fromEntries(map12.entries()); // make a plain object (*)
+// done!
+// obj = { banana: 1, orange: 2, meat: 4 }
+console.log(obj1); //{banana: 1, orange: 2, meat: 4}
+console.log(obj1.orange); // 2
+// A call to map.entries() returns an array of key/value pairs, exactly in the right format for Object.fromEntries.
+// We could also make line (*) shorter:
+let obj1 = Object.fromEntries(map12); // omit .entries()
+// That’s the same, because Object.fromEntries expects an iterable object as the argument.
+// Not necessarily an array. And the standard iteration for map returns same key/value pairs as
+// map.entries(). So we get a plain object with same key/values as the map.
+
     </script>
    </body>
 </html>
