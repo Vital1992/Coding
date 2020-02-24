@@ -63,27 +63,29 @@
 
         let dot = domain.indexOf('.');
         while (dot > -1){
-          domArr.push(domain);
-                  domain = domain.slice(dot + 1, domain.length);
-                  dot = domain.indexOf('.');
+          domArr.push(domain); //push the whole domain mobile.sports.yahoo.com
+                  domain = domain.slice(dot + 1, domain.length); //remove everything before first dot
+                  dot = domain.indexOf('.'); // find index of the next dot, when there's no dots left, dot will be: -1
         }
 
-        domArr.push(domain);
+        domArr.push(domain); //push the last part of domain (everything after last dot)
 
       domArr.forEach((domain) => {
-          if (!final[domain]) {
-              final[domain] = 0;
+          if (!final[domain]) { //final[domain] is the key mobile.sports.yahoo.com
+              final[domain] = 0; //initiate value
           }
-          final[domain] += parseInt(clicks)
+          //When final[domain] key already found in one of domArr iterations, value will be added to that key inside final object
+          final[domain] = final[domain] + parseInt(clicks); //0 + clicks
+
       });
       };
-      console.log(final)
-      const values = [];
+      console.log(final);
 
+      const values = [];
       for (let key in final) {
           values.push(`${final[key]} ${key}`);
       }
-      
+
       console.log(values);
       }
 
