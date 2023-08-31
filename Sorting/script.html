@@ -64,6 +64,7 @@ function myArrayMin(arr) {
 
 //Bubble sort-------------------------------------------------------------------
 //Bubble Sort sorts by comparing an item to the one next to it, and if it’s larger, swap places, if not, go to the next item.
+// Time: O(n^2)
 const unsortedArray = [23, 1, 4, 5, -123, 2, 0, 0, 01, 71, 10, 2];
 const sortedArray = bubbleSort(unsortedArray);
 
@@ -117,6 +118,7 @@ function bubbleSort(array) {
 //Selection sort compares a minimum item with the rest of the array.
 //Kind of like guessing which is the smallest number, then checking the rest of the array and
 //swapping the guessed minimum with another item that is smaller if it finds one.
+// Time: O(n^2)
 const array = [4, 3, -2, 0, 1];
 selectionSort(array);
 console.log("Array after sorting:  " + array);
@@ -171,6 +173,9 @@ function selectionSort(array) {
 };
 
 //Mergesort---------------------------------------------------------------------
+// In simple terms, we can say that the process of merge sort is to divide the array into two halves, sort each half, 
+// and then merge the sorted halves back together. This process is repeated until the entire array is sorted.
+// Time: O(n log n).
 const unsortedArray = [1, 4, 11, 2, 5, 55, 66, 21, 43, 0];
 console.log(mergeSort(unsortedArray));
 
@@ -257,6 +262,7 @@ the pivot value could be 6. Then, we have two arrays to sort:  [23, 0, 3] and [2
 2. Conquer the arrays by moving a pointer along each side and comparing values to the pivot value.
 If either the left value or the right value is larger/smaller than the pivot, swap them.
 3. Recursively repeat this process until the array has been sorted.
+// Time: O(n2)
 */
 /*
 const quickSort = function(array) {
@@ -264,8 +270,9 @@ const quickSort = function(array) {
     if(array.length <= 1) return array;
 
     // Pick a swap position about in the middle of the array
-    let swapIndex = Math.floor((array.length - 1)/2),       lessArray = [],
-            moreArray = [];
+    let swapIndex = Math.floor((array.length - 1)/2),       
+    lessArray = [],
+    moreArray = [];
 
     // Get the value of the swap index for comparison
     let swapValue = array[swapIndex];

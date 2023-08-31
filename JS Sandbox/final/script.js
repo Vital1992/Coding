@@ -424,9 +424,9 @@ console.log(isLiked(213))
 
 //------------------------------------------------------------------------------
 //Local storage
-localStorage.setItem('id','123')
-console.log(localStorage.getItem('id'))
-localStorage.removeItem('id')
+// localStorage.setItem('id','123')
+// console.log(localStorage.getItem('id'))
+// localStorage.removeItem('id')
 //------------------------------------------------------------------------------
 //Convert long decimal
 var count = 0.2222222222
@@ -434,19 +434,19 @@ const newCount = Math.round(count*1000)/1000;
 console.log(newCount)
 
 //Comparing arrays--------------------------------------------------------------
-const a = [1, 2, 3, 5];
-const b = [1, 2, 3, 5];
+// const a = [1, 2, 3, 5];
+// const b = [1, 2, 3, 5];
 // comparing both arrays using stringify
-if(JSON.stringify(a)==JSON.stringify(b))
- document.write("True");
-else
- document.write("False");
- document.write('<br>');
-const f=[1, 2, 4, 5];
-if(JSON.stringify(a)==JSON.stringify(f))
- document.write("True");
-else
- document.write("False");
+// if(JSON.stringify(a)==JSON.stringify(b))
+//  document.write("True");
+// else
+//  document.write("False");
+//  document.write('<br>');
+// const f=[1, 2, 4, 5];
+// if(JSON.stringify(a)==JSON.stringify(f))
+//  document.write("True");
+// else
+//  document.write("False");
 
 //Modifying array with objects--------------------------------------------------
  var person = [
@@ -475,9 +475,250 @@ console.log(person)
 
 
 //Compare two arrays:
-//const intersection = arrayA.filter(element => !arrayB.includes(element.item));// find the item that not present in the arrayB array
-
+let arrayA = [123,333,321,456]
+let arrayB = [123,222,321,456]
+const intersection = arrayA.filter(element => !arrayB.includes(element));// find the item that not present in the arrayB array
+console.log(intersection)
 //Coercion
 var c = String(1); //or Number(1);
 var d = String(2);
 console.log(c+d);//result will be 12, because Number() prevents implicit coercion
+
+//Lexicographical Maximum substring of string
+/*
+Given a string s we have to find the lexicographical maximum substring of a string
+Examples:
+Input : s = "ababaa"
+Output : babaa
+Explanation : "babaa" is the maximum lexicographic susbtring formed from this string
+
+Input : s = "asdfaa"
+Output : sdfaa
+*/
+let str = "banana"
+const fun = str => {
+  let mx = ""
+for (let i = 0; i < str.length; ++i) {
+  //console.log(str.substring(i))
+  if (mx.localeCompare(str.substring(i)) <= 0) {
+    mx = str.substring(i);
+  }
+}
+return mx
+}
+console.log(fun(str))
+/*
+The localeCompare() method compares two strings in the current locale.
+A Number, indicating whether the reference string comes before, after or is the
+same as the compareString in sort order. Returns one of three values:
+-1 if the reference string is sorted before the compareString
+0 if the two strings are equal
+1 if the reference string is sorted after the compareString
+*/
+//Sort dates
+var dates =  ["23 Jun 2018", "2 Dec 2017", "11 Jun 2018", "01 Jan 2019", "10 Jul 2016", "01 Jan 2007"];
+console.log(dates.sort((a, b) =>(new Date(a) > new Date(b)) ? 1 : -1))
+
+//FizzBuzz
+/*
+Write a program that prints the numbers from 1 to 100. But for multiples
+of three print “Fizz” instead of the number and for the multiples of five
+print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”.
+*/
+/*
+for (var i=1; i < 101; i++){
+    if (i % 15 == 0) console.log("FizzBuzz");
+    else if (i % 3 == 0) console.log("Fizz");
+    else if (i % 5 == 0) console.log("Buzz");
+    else console.log(i);
+}
+*/
+
+//Autoscale
+
+function autoScale(ins, avg){
+    var ans = ins;
+    var i = 0;
+
+    while (i < avg.length){
+        if (avg[i] < 25 && ans > 1){
+          //console.log(avg[i])
+            ans = ans / 2; //ans = Math.floor((ans + 1) / 2);
+            i += 10;
+          } else if (avg[i] > 60 && ans <= 2e8){
+            //console.log(avg[i])
+            ans = ans * 2;
+            i += 10;
+          }
+          i += 1;
+        }
+    return ans
+  }
+
+console.log(autoScale(1, [5, 10, 80]))
+console.log(autoScale(2, [25,23,1,2,3,4,5,6,7,8,90,10,76,80]))
+
+//Sort grades
+
+var input = ["D-","B+","C","A+","F","C+","C-","B","B-","H+","X","Z-","Z+","B@","C*","A!"];
+var loop = function(unsorted){
+  unsorted.forEach((cur,i) => {
+  var char = cur.split("")[0].toLowerCase() //split is not necessary, strings already can be treated as arrays
+
+  if (cur.split("")[1]){
+    var sign = cur.split("")[1]
+  }else{var sign=""}
+
+  //if ((char !== "a" && char !== "b" && char !== "c" && char !== "d" && char !== "f") || (sign !== "-" && sign !== "+" && sign !== "")){
+  if ((!/[a-cf]/.test(char)) || (sign !== "-" && sign !== "+" && sign !== "")){
+      unsorted.splice(i,1);
+      loop(unsorted)
+  }
+  })
+}
+var sort_grades = function(unsorted){
+  loop(unsorted)
+    unsorted.sort((a, b) => {
+ const order = {"+":-1, "-":1, undefined:0};
+ return a[0].localeCompare(b[0]) || order[a[1]] - order[b[1]]; //a[0].localeCompare(b[0]) will return 1, -1 or 0,]
+ //if 0 returned, order[a[1]] - order[b[1]] executed since 0 is falsy value
+})
+return unsorted
+};
+
+console.log(sort_grades(input))
+
+//arr.shift()
+const array1 = [1, 2, 3];
+
+const firstElement = array1.shift();
+
+console.log(array1);
+// expected output: Array [2, 3]
+
+console.log(firstElement);
+// expected output: 1
+
+
+// You are given 2 strings: amazon, amaze. Find the common alphabets in two strings and print it.
+// i/p: amazon, amaze
+// o/p: amaz
+
+let ip = ['amazon', 'amaze']
+if (ip[0].length < ip[1].length){
+  ip.reverse()
+}
+let result = [];
+for (let i = 0; i < ip[0].length; ++i) {
+  if (ip[0][i] == ip[1][i]){
+    result.push(ip[0][i])
+  }
+}
+result = result.join("")
+console.log(result)
+
+/*
+Your task is to find the sum of two fractions, expressed in the form X/Y and U/V, where X, Y, U, and V are four integers. Compute their sum and reduce it to its lowest indivisible state: A/B.
+
+For example:
+
+2/6+2/6 equals 4/6, which should be reduced to 2/3.
+7/10+13/10 equals 20/10 which should be reduced to 2/1.
+You are given an array of strings, which contains several expressions in the form "X/Y+U/V". Return a string array, where the ithe element is the result for the ith expression in the form "A/B".
+
+Example
+
+For fractions = ["2/6+2/6", "7/10+13/10"], the output should be
+addingFractions(fractions) = ["2/3", "2/1"].
+
+Input/Output
+
+[execution time limit] 4 seconds (py3)
+
+[input] array.string fractions
+
+An array of strings, where each string contains an expression that represents the sum of two fractions, given in the form "X/Y+U/V".
+
+Guaranteed constraints:
+1 ≤ fractions.length ≤ 500,
+fractions[i] has the form "X/Y+U/V" where X, Y, U, V are integers,
+ 1 ≤ X, Y, U, V ≤ 2000.
+
+[output] array.string
+
+An array of strings, where the ith element is the result for the ith expression in the form "A/B".
+*/
+
+// import re
+// def gcd(a, b):
+// 	if (a == 0):
+// 		return b
+// 	return gcd(b % a, a)
+//
+// def sumFraction(num1, den1, num2, den2):
+//
+// 	den3 = gcd(den1, den2)
+// 	den3 = (den1 * den2) / den3
+// 	num3 = ((num1) * (den3 / den1) +
+//             (num2) * (den3 / den2))
+// 	divider = gcd(num3, den3)
+// 	den3 = int(den3 / divider)
+// 	num3 = int(num3 / divider)
+// 	return str(num3) + "/" + str(den3)
+//
+// fractions = ["2/6+2/6", "7/10+13/10"]
+//
+// def addingFractions(fractions):
+// 	ans = []
+// 	for fraction in fractions:
+// 		res = re.search("(\d+)\/(\d+)\+(\d+)\/(\d+)", fraction)
+// 		ans.append(sumFraction(int(res.group(1)), int(res.group(2)), int(res.group(3)), int(res.group(4))))
+// 	return ans
+//
+//
+// print (addingFractions(fractions))
+
+/*
+SELECT distinct
+(departments.dep_name)
+FROM
+   departments
+   LEFT OUTER JOIN
+      employees
+      ON departments.id = employees.department
+WHERE
+   employees.id IS NULL;
+   You've just started working for a large and successful company, and it's come as a shock to find that the records about the company's internal organization haven't been updated for ages. Some employees have changed their departments and some have resigned, and consequently, there are some departments that have no employees in them. You want to identify these departments.
+
+Information about employees and departments is stored in two tables, employees and departments, which have the following structure:
+
+employees:
+id: the unique employee ID;
+full_name: the employee's full name;
+department: a foreign key referencing departments.id;
+departments:
+id: the unique department ID;
+dep_name: the department name.
+Given the tables employees and departments, write a select statement which returns only one column, dep_name, which contains all the departments in which there are no employees, sorted by id.
+
+Example
+
+For the following tables departments
+
+id	dep_name
+1	IT
+2	HR
+3	Sales
+4	Warehousing
+and employees
+
+id	full_name	department
+1	James Miller	1
+2	Joseph Harvey	1
+3	Anna Lawson	2
+4	Arthur Saunders	3
+the output should be
+
+dep_name
+Warehousing
+*/

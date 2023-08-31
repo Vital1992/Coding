@@ -91,42 +91,6 @@
 
       count(counts)
 
-      /*
-      var subdomainVisits = function(cpdomains) {
-          const domainMap = {};
-
-          cpdomains.forEach((cpdomain) => {
-              let [visited, domain] = cpdomain.split(',');
-              const domains = [];
-
-              let dot = domain.indexOf('.');
-
-              while(dot > -1) {
-                  domains.push(domain);
-                  domain = domain.slice(dot + 1, domain.length);
-                  dot = domain.indexOf('.');
-              }
-
-              domains.push(domain);
-
-              domains.forEach((domain) => {
-                  if (!domainMap[domain]) {
-                      domainMap[domain] = 0;
-                  }
-                  domainMap[domain] += parseInt(visited)
-              });
-          });
-
-          const values = [];
-
-          for (let key in domainMap) {
-              values.push(`${domainMap[key]} ${key}`);
-          }
-
-          return values;
-      };
-      console.log(subdomainVisits(counts))
-      */
     </script>
    </body>
 </html>

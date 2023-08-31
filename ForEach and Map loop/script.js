@@ -44,3 +44,22 @@ var ids = fieldsArr.map(function(current){
 console.log(ids);
 var index = ids.indexOf(id);
 console.log(index);
+
+let ip = ['aamazon', 'amazing']
+let sorted = (ip[0].length <= ip[1].length ? ip.reverse() : ip)
+let flag = true;
+let prevChar;
+let temp = [];
+let temp2 = [];
+let temp3 = [];
+let temp4 = [];
+
+for (i = 0; i <= sorted[1].split('').length-2; i++) {
+  temp.push(sorted[1].substring(i))
+  temp.push(sorted[1].substring(i+2,0))
+  temp3.push(sorted[1].slice(i,sorted[1].split('').length-i))
+  //console.log(sorted[1].split('').reverse().join('').substring(i))
+}
+console.log(temp)
+temp3 = temp3.filter(cur => cur.length > 1)
+console.log(temp3)

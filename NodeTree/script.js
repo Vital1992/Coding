@@ -1,3 +1,4 @@
+let tree
 function setup(){
   //noCanvas();
   tree = new Tree();
@@ -18,7 +19,7 @@ Tree.prototype.addValue = function(val){//addNode function
   var n = new Node(val);
   if (this.root == null){//prevents overriding root
     this.root = n;
-  }else{
+  } else {
     this.root.addNode(n);
   }
 }
@@ -30,10 +31,10 @@ Node.prototype.addNode = function(n){
     }else{
     this.left.addNode(n);
     }
-  }else if (n.value > this.value){//so if they equals, nothing will happen
+  } else if (n.value > this.value){//so if they equals, nothing will happen
     if (this.right == null){
       this.right = n
-    }else{
+    } else {
     this.right.addNode(n);
     }
   }
@@ -73,9 +74,9 @@ Tree.prototype.search = function(val){
 Node.prototype.searching = function(val){
   if (this.value == val){
     return val;
-  }else if(val < this.value && this.left != null){
+  } else if (val < this.value && this.left != null){
     return this.left.searching(val);
-  }else if(val > this.value && this.right != null){
+  } else if (val > this.value && this.right != null){
     return this.right.searching(val);
   }
 }

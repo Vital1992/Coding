@@ -451,7 +451,7 @@ console.log(obj1); //{banana: 1, orange: 2, meat: 4}
 console.log(obj1.orange); // 2
 // A call to map.entries() returns an array of key/value pairs, exactly in the right format for Object.fromEntries.
 // We could also make line (*) shorter:
-let obj1 = Object.fromEntries(map12); // omit .entries()
+let obj2 = Object.fromEntries(map12); // omit .entries()
 // That’s the same, because Object.fromEntries expects an iterable object as the argument.
 // Not necessarily an array. And the standard iteration for map returns same key/value pairs as
 // map.entries(). So we get a plain object with same key/values as the map.
