@@ -18,8 +18,9 @@ function twoSum(arr, S) {
     for (var j = i + 1; j < arr.length; j++) {
       // determine if these two elements sum to S
       if (arr[i] + arr[j] === S) {
-        //If we want to return nums itself: sums.push([arr[i], arr[j]]);
-        sums.push(i,j);
+        //If we want to return nums itself: 
+        sums.push([arr[i], arr[j]]);
+        // sums.push(i,j);
       }
     }
   }
@@ -27,3 +28,56 @@ function twoSum(arr, S) {
   return sums;
 }
 console.log(twoSum([10, 2, 3, 7, 11, 15], 9));
+
+//Optimised solution
+
+
+function findSum(arr, toFind) {
+  let mapOfNums = {}
+  let remainders = {}
+  let res = []
+
+  for (let i = 0; i < arr.length; i++) {
+      mapOfNums[arr[i]] = i
+  }
+  
+  for (let i = 0; i < arr.length; i++) {
+      if (toFind - arr[i] > 0) {
+          remainders[toFind - arr[i]] = i
+      }
+  }
+
+  for (const key in remainders) {
+      if (remainders.hasOwnProperty(key) && arr.indexOf(parseInt(key))) {
+          res = [arr.indexOf(parseInt(key)), remainders[key]]
+          break;
+      }
+  }
+
+  return [arr[res[0]],arr[res[1]]]// or res for indexes only
+}
+
+const arr = [34,768,23,9,43,9,2]
+
+console.log(findSum(arr, 770)) //[ 2, 768 ]
+// console.log(findSum(arr, 770)) //[ 2, 768 ]
+
+// Leetcode solution:
+// const twoSum = (array, goal) => {
+//   let mapOfNumbers = {};
+//       let twoIndexes = [];
+
+//       for (let i = 0; i < array.length; i++) {
+//       mapOfNumbers[array[i]] = i;
+//   }
+
+//   for (let i = 0; i < array.length; i++) {
+//         let target = goal - arr[i];
+//     if(mapOfNumbers[target] !== null && mapOfNumbers[target] !== i) {
+//       twoIndexes.push(i);
+//           twoIndexes.push(mapOfNumbers[target]);
+//     }
+//       }
+
+//     return twoIndexes;
+// }
