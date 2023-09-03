@@ -50,7 +50,3 @@ const grid = [
 const islands = numIslands(grid);
 console.log(islands); // Output: 4
 
-// local and storage
-// cookies 
-
-console.log(Math.floor(Date.new("2023-08-30T01:07:37.930Z") / 1000))
