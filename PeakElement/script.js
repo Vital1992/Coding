@@ -17,6 +17,7 @@
 
 
 const nums = [1,2,1,2,5,6,2]
+// const nums = [5,3,9,6,2,1,6]
 
 let finals = []
 
@@ -39,11 +40,11 @@ return `${cur}`
  function binaryFindPeak(nums) {
   let last = nums.length;
   let start = 0;
-  let mid = Math.floor(last / 2);
+  let mid = Math.floor(last / 2 - 1);
 
   while (mid < last && mid > start) {
     let middle = nums[mid];
-    
+    console.log(middle)
     // If the element at the current mid index (n) is greater than both its neighbors. 
     // If it is, this element is a peak, and its index (mid) is returned as the result.
     if (nums[mid - 1] < middle && middle > nums[mid + 1]) {
