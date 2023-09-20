@@ -35,3 +35,41 @@ return `${cur}`
 : finals.length === 0 ? 'invalid' : finals
 
  console.log(toReturn.join(' '))
+
+ function binaryFindPeak(nums) {
+  let last = nums.length;
+  let start = 0;
+  let mid = Math.floor(last / 2);
+
+  while (mid < last && mid > start) {
+    let middle = nums[mid];
+    
+    // If the element at the current mid index (n) is greater than both its neighbors. 
+    // If it is, this element is a peak, and its index (mid) is returned as the result.
+    if (nums[mid - 1] < middle && middle > nums[mid + 1]) {
+      return mid;
+    } else {
+      if (nums[mid] < nums[mid - 1]) {
+        last = mid;
+        mid = Math.floor((mid + start) / 2);
+      } else {
+        start = mid;
+        mid = Math.floor((mid + last) / 2);
+      }
+    }
+  }
+
+  if (nums[0] < nums[1]) {
+    return 0;
+  }
+
+  if (nums[last - 1] > nums[last - 2]) {
+    return last - 1;
+  }
+
+  return -1;
+}
+
+// Example usage:
+const peakIndex = binaryFindPeak(nums);
+console.log("Peak Index:", peakIndex);

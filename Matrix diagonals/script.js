@@ -1,9 +1,3 @@
-<html>
-   <head>
-      <title>JavaScript</title>
-   </head>
-   <body>
-      <script>
 /*
 
 Print All Diagonals of a Matrix
@@ -66,6 +60,3 @@ function printLongestDiagonals(matrix) {
     }
     console.log(res)
   }
-    </script>
-   </body>
-</html>
