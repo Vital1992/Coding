@@ -136,4 +136,10 @@ function heapSort(arr) {
 
 console.log(heapSort([2,8,5,4,9,1,7,3]))
 
- 
+//        2
+//      /   \
+//     8     5
+//    / \   / \
+//   4   9 1   7
+//  /
+// 3

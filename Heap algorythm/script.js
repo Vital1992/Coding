@@ -15,7 +15,8 @@ const getPermutations = arr =>  { // All combinations(orders)
       }
   
       generate(n - 1, heapArr);
-  
+      console.log(n)
+      console.log(heapArr)
       for (let i = 0; i < n - 1; i++) {
         if (n % 2 === 0) {
           swapInPlace(heapArr, i, n - 1);

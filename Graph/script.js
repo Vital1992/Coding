@@ -118,31 +118,29 @@
 // dfs('PHX')
 
 class Graph {
-  #nodes;
-
   constructor() {
-    this.#nodes = {};
+    this.nodes = {}
   }
 
   addNode(node) {
-    this.#nodes[node] = [];
+    this.nodes[node] = [];
   }
 
   addEdge(source, destination) {
-    if (!this.#nodes[source] || !this.#nodes[destination]) {
+    if (!this.nodes[source] || !this.nodes[destination]) {
       return false;
     }
 
-    if (!this.#nodes[source].includes(destination)) {
-      this.#nodes[source].push(destination)
+    if (!this.nodes[source].includes(destination)) {
+      this.nodes[source].push(destination)
     }
-    if (!this.#nodes[destination].includes(source)) {
-      this.#nodes[destination].push(source)
+    if (!this.nodes[destination].includes(source)) {
+      this.nodes[destination].push(source)
     }
   }
 
   showNodes() {
-    console.log(this.#nodes)
+    console.log(this.nodes)
   }
 
   bfs(source, destination) {
@@ -160,7 +158,7 @@ class Graph {
       }
 
       visited[current] = true;
-      let neighbours = this.#nodes[current];
+      let neighbours = this.nodes[current];
       for (let i = 0; i < neighbours.length; i++) {
         queue.push(neighbours[i]);
       }
@@ -178,7 +176,7 @@ class Graph {
     }
     visited[source] = true;
 
-    const neighbours = this.#nodes[source];
+    const neighbours = this.nodes[source];
     for (let i = 0; i < neighbours.length; i++) {
       if (this.dfs(neighbours[i], destination, visited)) {
         return true;
