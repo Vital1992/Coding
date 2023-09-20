@@ -33,14 +33,9 @@ console.log(twoSum([10, 2, 3, 7, 11, 15], 9));
 
 
 function findSum(arr, toFind) {
-  let mapOfNums = {}
   let remainders = {}
   let res = []
 
-  for (let i = 0; i < arr.length; i++) {
-      mapOfNums[arr[i]] = i
-  }
-  
   for (let i = 0; i < arr.length; i++) {
       if (toFind - arr[i] > 0) {
           remainders[toFind - arr[i]] = i
@@ -63,21 +58,22 @@ console.log(findSum(arr, 770)) //[ 2, 768 ]
 // console.log(findSum(arr, 770)) //[ 2, 768 ]
 
 // Leetcode solution:
-// const twoSum = (array, goal) => {
-//   let mapOfNumbers = {};
-//       let twoIndexes = [];
+const twoSumOpt = (array, goal) => {
+  let mapOfNumbers = {};
+  let twoIndexes = [];
 
-//       for (let i = 0; i < array.length; i++) {
-//       mapOfNumbers[array[i]] = i;
-//   }
+  for (let i = 0; i < array.length; i++) {
+    mapOfNumbers[array[i]] = i;
+  }
 
-//   for (let i = 0; i < array.length; i++) {
-//         let target = goal - arr[i];
-//     if(mapOfNumbers[target] !== null && mapOfNumbers[target] !== i) {
-//       twoIndexes.push(i);
-//           twoIndexes.push(mapOfNumbers[target]);
-//     }
-//       }
+  for (let i = 0; i < array.length; i++) {
+    let target = goal - arr[i];
+    if (mapOfNumbers[target] && mapOfNumbers[target] !== i) {
+      twoIndexes.push(array[mapOfNumbers[target]]);
+    }
+  }
 
-//     return twoIndexes;
-// }
+    return twoIndexes;
+}
+
+console.log(twoSumOpt(arr, 770)) //[ 2, 768 ]
