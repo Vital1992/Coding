@@ -123,4 +123,4 @@ const value = [ -2, 10, 10, -3, 10, 30 ]
 
 // Call the checkPossibility method
 const res = checkPossibility(parent, value);
-console.log(res); // Output: 20
+console.log(res); // Output: 40
